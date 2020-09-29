@@ -10,12 +10,12 @@ const main = async () => {
         console.log('someInt', someInt)
       },
       abort(_msg, _file, line, column) {
-        console.error("abort called at main.ts:" + line + ":" + column)
+        console.error("abort called at:" + line + ":" + column)
       }
     }
   }
   
-  const wasmModule = await loader.instantiate(compiledWasm, imports)
+  const wasm = await loader.instantiate(compiledWasm, imports)
 }
 
 main()
