@@ -3,6 +3,7 @@ import {someFn, anotherFn} from './someMacroLikeLib'
 @external("env", "jsHello")
 declare function jsHello(message?: i32): void
 
+// Note: by using strings helper functions will be compiled into the .wasm (~400Bytes » 1KB)
 export function strFromWasmToJs(): string {
   return 'Hi there, this is Wasm speaking!'
 }
