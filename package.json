@@ -9,7 +9,7 @@
     "asbuild:optimized": "asc assembly/index.ts -O --noAssert -b build/optimized.wasm -t build/optimized.wat -d build/wasm.d.ts",
     "asbuild:custom": "asc assembly/index.ts -O3 --runtime stub --noAssert -b build/optimized.wasm -t build/optimized.wat -d build/optimized.d.ts",
     "asbuild": "npm run asbuild:untouched && npm run asbuild:optimized",
-    "full": "clear; echo '---------'; npm run asbuild:custom; echo '---------'; node ./run-wasm/as-loader.js; echo '---------'"
+    "full": "./build-and-run.sh"
   },
   "author": "Wietse Wind <hi@wietse.com>",
   "license": "MIT",
