@@ -2,21 +2,21 @@
   "name": "wasm-node-sample",
   "version": "0.0.1",
   "description": "",
-  "main": "index.js",
+  "main": "run-wasm/as-loader.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
     "asbuild:untouched": "asc assembly/index.ts --debug -b build/untouched.wasm -t build/untouched.wat -d build/wasm.d.ts",
     "asbuild:optimized": "asc assembly/index.ts -O --noAssert -b build/optimized.wasm -t build/optimized.wat -d build/wasm.d.ts",
-    "asbuild:custom": "asc assembly/index.ts -O3 --runtime stub --noAssert -b build/optimized.wasm -t build/optimized.wat -d build/wasm.d.ts",
+    "asbuild:custom": "asc assembly/index.ts -O3 --runtime stub --noAssert -b build/optimized.wasm -t build/optimized.wat -d build/optimized.d.ts",
     "asbuild": "npm run asbuild:untouched && npm run asbuild:optimized",
-    "full": "clear; echo '---------'; npm run asbuild:custom; echo '---------'; node ./index.js;echo '---------'"
+    "full": "clear; echo '---------'; npm run asbuild:custom; echo '---------'; node ./run-wasm/as-loader.js; echo '---------'"
   },
   "author": "Wietse Wind <hi@wietse.com>",
   "license": "MIT",
   "dependencies": {
-    "@assemblyscript/loader": "^0.10.1"
+    "@assemblyscript/loader": "^0.14.12"
   },
   "devDependencies": {
-    "assemblyscript": "^0.10.0-nightly.20200611"
+    "assemblyscript": "^0.14.12"
   }
 }
