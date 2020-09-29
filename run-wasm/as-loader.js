@@ -16,6 +16,11 @@ const main = async () => {
   }
   
   const wasm = await loader.instantiate(compiledWasm, imports)
+  const s = pointer => wasm.exports.__getString(pointer)
+
+  console.log({
+    strFromWasmToJs: s(wasm.exports.strFromWasmToJs())
+  })
 }
 
 main()
