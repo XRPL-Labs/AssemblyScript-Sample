@@ -4,7 +4,7 @@ This sample code:
 
 - Allows you to code AssemblyScript in `/assembly`
 - Allows you to build it (eg. `npm run asbuild:custom`, see `package.json` » `scripts`)
-- Allows you to run it (eg `npm run full` (build & run), or manually: `node ./index.js`)
+- Allows you to run it (eg `npm run full` (build & run), or manually: `node ./run-wasm/as-loader.js`)
 
 ## Getting started
 
@@ -13,5 +13,5 @@ This sample code:
 
 ## Key concepts
 
-1. Call JS fn from AS environment. Define JS side functions in `./index.js` and define them as `@external` in eg `assembly/index.ts`.
+1. Call JS fn from AS environment. Define JS side functions in `./run-wasm/as-loader.js` and define them as `@external` in eg `assembly/index.ts`.
 2. Macro-like behaviour by using `import` fns in AS from other `.ts` files exporting functions, in eg `assembly/index.ts` & `assembly/someMacroLikeLib.ts`
