@@ -1,7 +1,7 @@
 const fs = require("fs")
 const loader = require("@assemblyscript/loader")
 
-const compiledWasm = fs.readFileSync(__dirname + "/../build/optimized.wasm")
+const compiledWasm = fs.readFileSync(__dirname + "/../build/as-optimized.wasm")
 
 const main = async () => {
   const imports = {

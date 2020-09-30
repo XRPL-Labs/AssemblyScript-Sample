@@ -27,7 +27,7 @@ const s = (buffer, ptr) => {
 
 const main = async () => {
   try {
-    const compiledWasm = new Uint8Array(fs.readFileSync(__dirname + '/../build/optimized.wasm'))
+    const compiledWasm = new Uint8Array(fs.readFileSync(__dirname + '/../build/as-optimized.wasm'))
     const wasm = await WebAssembly.instantiate(compiledWasm, imports)
 
     console.log({

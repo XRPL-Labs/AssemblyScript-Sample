@@ -5,9 +5,9 @@
   "main": "run-wasm/as-loader.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
-    "asbuild:untouched": "asc assembly/index.ts --debug -b build/untouched.wasm -t build/untouched.wat -d build/wasm.d.ts",
-    "asbuild:optimized": "asc assembly/index.ts -O --noAssert -b build/optimized.wasm -t build/optimized.wat -d build/wasm.d.ts",
-    "asbuild:custom": "asc assembly/index.ts -O3 --runtime stub --noAssert -b build/optimized.wasm -t build/optimized.wat -d build/optimized.d.ts",
+    "asbuild:untouched": "asc src/assembly/index.ts --debug -b build/as-untouched.wasm -t build/as-untouched.wat -d build/as-untouched.d.ts",
+    "asbuild:optimized": "asc src/assembly/index.ts -O --noAssert -b build/as-optimized.wasm -t build/as-optimized.wat -d build/as-optimized.d.ts",
+    "asbuild:custom": "asc src/assembly/index.ts -O3 --runtime stub --noAssert -b build/as-optimized.wasm -t build/as-optimized.wat -d build/as-optimized.d.ts",
     "asbuild": "npm run asbuild:untouched && npm run asbuild:optimized",
     "full": "./build-and-run.sh"
   },
