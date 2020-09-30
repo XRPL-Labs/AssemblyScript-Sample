@@ -4,3 +4,4 @@ build/*.wasm
 build/*.wasm.map
 build/*.d.ts
 build/*.wat
+/.emcache

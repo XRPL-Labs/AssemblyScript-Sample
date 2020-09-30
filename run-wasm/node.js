@@ -1,10 +1,15 @@
 const fs = require('fs')
 const crypto = require('crypto')
 
+const memory = new WebAssembly.Memory({ initial: 1, maximum: 1 })
+
 const imports = {
   env: {
+    __memory_base: 0,
+    memory,
     jsHello(someInt) {
-      console.log('someInt', someInt)
+      console.log('jsHello called:')
+      console.log('  -> someInt', someInt)
     },
     abort(_msg, _file, line, column) {
       console.error("abort called at:" + line + ":" + column)
@@ -22,16 +27,20 @@ const s = (buffer, ptr) => {
   if (len <= 32) {
     return String.fromCharCode.apply(String, arr)
   }
-  return (new TextEncoder('utf-8')).decode(arr)
-}
+  return (new TextDecoder('utf-16le')).decode(arr)
+}  
 
 const main = async () => {
   try {
-    const compiledWasm = new Uint8Array(fs.readFileSync(__dirname + '/../build/as-optimized.wasm'))
+    const compiledWasm = new Uint8Array(fs.readFileSync(__dirname + '/../build/' + process.argv[2] + '-optimized.wasm'))
     const wasm = await WebAssembly.instantiate(compiledWasm, imports)
 
+    wasm.instance.exports.main()
+
     console.log({
-      strFromWasmToJs: s(wasm.instance.exports.memory.buffer, wasm.instance.exports.strFromWasmToJs())
+      // exports: wasm.instance.exports,
+      strFromWasmToJs: wasm.instance.exports.strFromWasmToJs(),
+      _s_strFromWasmToJs: s(memory.buffer, wasm.instance.exports.strFromWasmToJs())
     })
   } catch (e) {
     console.error(e)
