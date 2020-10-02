@@ -14,7 +14,8 @@
   "author": "Wietse Wind <hi@wietse.com>",
   "license": "MIT",
   "dependencies": {
-    "@assemblyscript/loader": "^0.14.12"
+    "@assemblyscript/loader": "^0.14.12",
+    "@wasmer/wasi": "^0.12.0"
   },
   "devDependencies": {
     "assemblyscript": "^0.14.12"
