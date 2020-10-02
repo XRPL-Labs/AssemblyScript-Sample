@@ -14,7 +14,7 @@ const imports = {
     abort(_msg, _file, line, column) {
       console.error("abort called at:" + line + ":" + column)
     },
-    // Required to use Math.random (?)
+    // For AssemblyScript, where the sample uses Math.random
     seed () {
       return crypto.randomBytes(128).readUInt32BE() + Date.now()
     }
